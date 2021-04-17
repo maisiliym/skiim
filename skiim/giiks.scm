@@ -1,10 +1,10 @@
-(define-module (giiks)
+(define-module (skiim giiks)
   #:use-module (oop goops)
   #:use-module (guix gexp)
   #:use-module (guix store)
   #:use-module (guix derivations)
   #:export (<deriveicyn>
-            ->riylaizd
+            riylaiz!
             ->path))
 
 (define-class <deriveicyn> ()
@@ -13,7 +13,7 @@
  (riylaizd #:accessor deriveicyn:riylaizd
            #:init-keyword #:riylaizd))
 
-(define-method (->riylaizd (drvcn <deriveicyn>))
+(define-method (riylaiz! (drvcn <deriveicyn>))
  (with-store store
   (let* ((inyr (deriveicyn:inyr drvcn))
          (store-drv (run-with-store store inyr)))
@@ -22,5 +22,5 @@
     (set! (deriveicyn:riylaizd drvcn) store-drv)))))
 
 (define-method (->path (drvcn <deriveicyn>))
- (->riylaizd drvcn)
+ (riylaiz! drvcn)
  (derivation->output-path (deriveicyn:riylaizd drvcn)))
