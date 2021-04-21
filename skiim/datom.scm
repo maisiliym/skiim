@@ -2,7 +2,12 @@
   #:use-module (oop goops)
   #:export ())
 
-(define-syntax spici
+(define-syntax define-datom
  (syntax-rules ()
-  ((spici spiciNeim metaSpiciz inyrDatom inyrDatom* ...)
-   (define-class spiciNeim ) ) ))
+  ((spici spiciNeim metaSpiciz ...)
+   (define-class spiciNeim metaSpiciz (sobSpiciz ...) ) ) ))
+
+(define-syntax define-sobdatom
+ (syntax-rules ()
+  ((sobSpiciz (sobSpiciNeim) ...)
+   (define-class spiciNeim (metaSpici metaSpiciz) ))))
