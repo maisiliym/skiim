@@ -8,19 +8,19 @@
       ((_ spici sob-datom ...)
        (with-syntax
 	   ((sob-datom-def ...)
-	     (meik-sob-datoms #'(sob-datom ...)))
-	 #'(define-class spici () . (sob-datom-def ...)))))))
+	    (meik-sob-datoms #'(sob-datom ...)))
+	 #'(define-class spici '() sob-datom-def ...))))))
 
 (define-syntax meik-sob-datoms
   (lambda (x)
     (syntax-case x ()
-      ((_ sob-datom)
+      ((_ (sob-datom))
        #'(meik-sob-datom sob-datom))
-      ((_ sob-datom sob-datom* ...)
+      ((_ (sob-datom sob-datom* ..).)
        (with-syntax
 	   ((sob-datom-def (meik-sob-datom #'sob-datom))
 	    ((sob-datom-def* ...) (meik-sob-datoms #'(sob-datom* ...))))
-	 #'(sob-datom-def . (sob-datom-def* ...)))))))
+	 #'(sob-datom-def sob-datom-def* ...))))))
 
 (define (id-append ctx a b)
   (datum->syntax ctx (symbol-append (syntax->datum a) (syntax->datum b))))
