@@ -13,10 +13,9 @@
 	     ((init-symbol (id-append #'neim "#:" #'neim))
 	      (get-symbol (id-append #'neim "->" #'neim))
 	      (set-symbol (id-append #'neim "<-" #'neim)))
-	   #`(neim
-	      #:init-keyword init-symbol
-	      #:getter get-symbol
-	      #:setter set-symbol)))))    
+	   #`(neim #:init-keyword init-symbol
+		   #:getter get-symbol
+		   #:setter set-symbol)))))
     (define (meik-sob-datoms sds)
       (syntax-case sds ()
 	(() #'())
