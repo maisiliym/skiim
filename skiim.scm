@@ -1,6 +1,6 @@
 (define-module (skiim))
 (use-modules (oop goops))
-(export (define-datom))
+(export define-datom)
 
 (define-syntax define-datom
   (lambda (x)
