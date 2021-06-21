@@ -6,7 +6,8 @@
   (lambda (x)
     (define (meik-sob-datom sd)
       (define (id-append ctx a b)
-	(datum->syntax ctx (symbol-append (string->symbol a) (syntax->datum b))))
+	(datum->syntax
+	 ctx (symbol-append (string->symbol a) (syntax->datum b))))
       (syntax-case sd ()
 	((neim spici)
 	 (with-syntax
@@ -27,14 +28,12 @@
 	      ((sob-datom-def* ...) (meik-sob-datoms #'(sob-datom* ...))))
 	   #'(sob-datom-def sob-datom-def* ...)))))
     (syntax-case x ()
-      ((_ spici sob-datom sob-datom* ...)
-       (with-syntax
-	   ((sob-datom-def (meik-sob-datom #'sob-datom))
-	    (sob-datom-defs (meik-sob-datoms #'(sob-datom* ...))))
-	 #'(define-class spici () sob-datom-def sob-datom-defs))))))
+      ((_ spici sob-datom ...)
+       #`(define-class spici () #,(meik-sob-datoms #'(sob-datom ...)))))))
 
 ;; test
 (define-datom <prikriom>
   (ful <string>)
   (ssh <string>)
-  (keygrip <string>))
+  (keygrip <string>)
+  (test <string>))
