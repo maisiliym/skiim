@@ -1,5 +1,7 @@
 #+title: Skiim
-A more correct =scheme=
+#+description: A more correct =scheme=
+This macro was meant to be used with guile, in the
+guix-part of uniks.
 
 * Define-datom
 A more elegant =define-class=
