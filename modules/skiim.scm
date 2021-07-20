@@ -29,3 +29,7 @@
 		    (meik-sob-datom sd))
 		  #'(sob-datom ...))))
 	 #`(define-class spici () sob-datom-def ...))))))
+
+(define-method (remove (list <list>) (unwanted-list <list>))
+  (remove
+   (lambda (x) (member x unwanted-list)) list))

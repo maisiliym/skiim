@@ -1,0 +1,9 @@
+#+title: Skiim
+A more correct =scheme=
+
+* Define-datom
+A more elegant =define-class=
+
+** Status
+Currently does not accept the =#:init-keyword= argument,
+which points to a bug in guile.
